@@ -45,15 +45,15 @@ function error {
 # delete if exists
 if [ -f "firmware.zip" ]; then
     info "firmware.zip exists; removing"
-#    rm -f firmware.zip
+    rm -f firmware.zip
 fi
 
 # download firmware
-#wget --quiet --output-document firmware.zip https://github.com/raspberrypi/firmware/archive/$BRANCH.zip
+wget --quiet --output-document firmware.zip https://github.com/raspberrypi/firmware/archive/$BRANCH.zip
 
 # unzip firmware
-#unzip -qq firmware.zip
-#mv firmware-*/ firmware/
+unzip -qq firmware.zip
+mv firmware-*/ firmware/
 
 # get version
 KERNELVERSION=`cat firmware/extra/uname_string | cut -f 3 -d ' ' | tr -d +`
@@ -68,3 +68,6 @@ dch -v ${DEBVERSION} -D "stable" -u "low" -p "Firmware update to ${KERNELVERSION
 # build the package
 dpkg-buildpackage -aarmel -uc -us -b
 dpkg-buildpackage -aarmhf -uc -us -b
+
+# cleanup
+debian/rules clean
