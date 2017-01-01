@@ -48,6 +48,11 @@ if [ -f "firmware.zip" ]; then
     rm -f firmware.zip
 fi
 
+if [ -d "firmware/" ]; then
+    info "firmware/ exists; removing"
+    rm -rf firmware/
+fi
+
 # download firmware
 wget --quiet --output-document firmware.zip https://github.com/raspberrypi/firmware/archive/$BRANCH.zip
 
