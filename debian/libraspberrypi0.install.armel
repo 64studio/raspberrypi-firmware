@@ -1,0 +1,2 @@
+firmware/opt/vc/lib/lib*.so /opt/vc/lib/
+firmware/opt/vc/lib/plugins /opt/vc/lib/plugins

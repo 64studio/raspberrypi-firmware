@@ -1,0 +1,5 @@
+raspberrypi-firmware (1.20170101-1) stable; urgency=low
+
+  * Firmware update to 4.9.0 as of today's date.
+
+ -- Chris Obbard <chris@64studio.com>  Sun, 01 Jan 2017 12:56:13 +0000

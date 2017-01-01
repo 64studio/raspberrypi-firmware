@@ -1,0 +1,5 @@
+firmware/boot/overlays /boot/overlays
+firmware/boot/*.dtb /boot/
+firmware/boot/kernel*.img /boot/
+firmware/boot/COPYING.linux /boot/COPYING.linux
+firmware/modules /lib/

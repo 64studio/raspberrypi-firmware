@@ -1,0 +1,8 @@
+debian/libraspberrypi0/
+debian/libraspberrypi-bin/
+debian/libraspberrypi-dev/
+debian/libraspberrypi-doc/
+debian/raspberrypi-bootloader/
+debian/raspberrypi-kernel/
+firmware/
+firmware.zip

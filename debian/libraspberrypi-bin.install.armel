@@ -1,0 +1,2 @@
+firmware/opt/vc/bin/* /opt/vc/bin/
+firmware/opt/vc/sbin/* /opt/vc/sbin/

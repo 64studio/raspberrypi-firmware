@@ -1,0 +1,4 @@
+firmware/boot/*.elf /boot/
+firmware/boot/*.dat /boot/
+firmware/boot/*.bin /boot/
+firmware/boot/LICENCE.broadcom /boot/LICENCE.broadcom

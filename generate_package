@@ -1,0 +1,70 @@
+#!/bin/bash
+#
+# generate_package
+#
+# (c) Chris Obbard 2016
+#
+# Downloads and packages the RPi Non-free Firmware and
+# pre-compiled Kernel
+#
+#
+#
+
+if (( $# != 1 )); then
+    echo ""
+    echo "generate_package: Pi Firmware & Kernel Debian Packager"
+    echo ""
+    echo "You must pass two arguments."
+    echo "./generate_package <branch_or_commit_id>"
+    echo ""
+    echo ""
+    echo "./generate_package master       generates the package from the master branch"
+    echo "./generate_package next         generates the package from the next branch"
+    echo "./generate_package 1b47b2143a2f5b76ab3bd484c3037a3c38e74d63  generates the package from the specified commit ID"
+    echo ""
+    echo "Magic Script written by Chris Obbard <chris@64studio.com>"
+    exit 1
+fi
+
+BRANCH=$1
+AUTHOR_NAME="Chris Obbard"
+AUTHOR_EMAIL="chris@64studio.com"
+
+function info {
+    echo "[I] generate_package: $1"
+}
+
+function error {
+    echo "[E] generate_package: $1"
+    exit 1
+}
+
+# move back out of debian dir
+#cd ..
+
+# delete if exists
+if [ -f "firmware.zip" ]; then
+    info "firmware.zip exists; removing"
+#    rm -f firmware.zip
+fi
+
+# download firmware
+#wget --quiet --output-document firmware.zip https://github.com/raspberrypi/firmware/archive/$BRANCH.zip
+
+# unzip firmware
+#unzip -qq firmware.zip
+#mv firmware-*/ firmware/
+
+# get version
+KERNELVERSION=`cat firmware/extra/uname_string | cut -f 3 -d ' ' | tr -d +`
+
+# add in changelog entry
+export DEBEMAIL="$AUTHOR_NAME <$AUTHOR_EMAIL>"
+
+DATE=`date -u +%Y%m%d`
+DEBVERSION=1.$DATE-1
+dch -v ${DEBVERSION} -D "stable" -u "low" -p "Firmware update to ${KERNELVERSION} as of today's date."
+
+# build the package
+dpkg-buildpackage -aarmel -uc -us -b
+dpkg-buildpackage -aarmhf -uc -us -b

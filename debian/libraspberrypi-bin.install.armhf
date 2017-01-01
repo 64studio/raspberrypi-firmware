@@ -1,0 +1,2 @@
+firmware/hardfp/opt/vc/bin/* /opt/vc/bin/
+firmware/hardfp/opt/vc/sbin/* /opt/vc/sbin/

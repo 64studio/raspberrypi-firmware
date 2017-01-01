@@ -1,0 +1,2 @@
+firmware/opt/vc/include/* /opt/vc/include/
+firmware/opt/vc/lib/lib*.a /opt/vc/lib/

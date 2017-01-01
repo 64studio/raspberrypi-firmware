@@ -1,0 +1,14 @@
+# Automatically added by dh_installmodules
+if [ "$1" = "configure" ]; then
+	if [ -e /boot/System.map-4.9.0+ ]; then
+		depmod -a -F /boot/System.map-4.9.0+ 4.9.0+ || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installmodules
+if [ "$1" = "configure" ]; then
+	if [ -e /boot/System.map-4.9.0-v7+ ]; then
+		depmod -a -F /boot/System.map-4.9.0-v7+ 4.9.0-v7+ || true
+	fi
+fi
+# End automatically added section
